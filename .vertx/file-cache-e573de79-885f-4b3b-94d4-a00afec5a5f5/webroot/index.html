@@ -1,0 +1,79 @@
+<html>
+<head>
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script type="text/javascript">
+ $(document).ready(
+  function(){
+	  $("#btn1").click(
+				function (){
+					var data = $('#loginForm').serialize();
+					
+					var json = arrayToJson(data);
+					alert(json);
+					 $.ajax(
+							 {
+							type:"post",
+							url:"/login",
+							data:json,
+							async:false,
+							cache:true,
+							dataType:'json',
+							beforeSend: function(request) {
+								　　request.setRequestHeader("Content-type", "application/json");  
+								   //通过这种方法可以设置自定义HTTP头字段
+								},
+								success:function(data){
+									console.log(data);
+									return false;
+								},
+							error:function(request){
+						     console.log(request);
+							alert("erro!");
+							}
+							 }
+				 ); 
+				}	  
+			  );
+	  
+	  $("#btn2").click(function(){
+		  $("#loginForm").submit();
+	  });
+  }
+ );
+ 
+ /**
+  *将表单的数据转化为json
+  */
+ function arrayToJson(formArray){
+	  var dataArray = {};
+	  $.each(formArray,function(){
+	    if(dataArray[this.name]){
+	      if(!dataArray[this.name].push){
+	        dataArray[this.name] = [dataArray[this.name]];
+	      }
+	      dataArray[this.name].push(this.value || '');
+	    }else{
+	      dataArray[this.name] = this.value || '';
+	    }
+	  });
+	  return JSON.stringify(dataArray);
+	}
+</script>
+</head>
+<body>
+              <center>
+              <div><h1>用户系统</h1>
+              <div>
+              <form id="loginForm">
+                                                    用户名：<input type="text" name="userName" value="jimTina"/></br>
+                                                    密码    ：<input type="password" name="passWord" value="314159"/></br>
+                 <button id="btn1">登陆系统</button>
+                 <button id="reg">注册用户</button>
+                 <input type="submit" value="sub">
+              </form>
+              </div>
+              </div>
+              </center>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<html>
+<head>
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript">
+/*  function login(){
+	 $.ajax(
+	type:"post",
+	url:"/login"
+	data:$('loginForm').serialize(),
+	async:false,
+	error:function(request){
+		alert("connection erro");
+	},
+	success:function(data){
+		alert("success");
+	}
+	 );
+ } */
+ 
+ jQuery(document).ready(
+  function(){
+	 /*  $("#btn1").click(function(){
+		  $.ajax(
+					type:"post",
+					url:"/login"
+					data:$('loginForm').serialize(),
+					async:false,
+					error:function(request){
+						alert("connection erro");
+					},
+					success:function(data){
+						alert("success");
+					}
+					 );
+	  }); */
+	  
+	   var options = {
+			  catch:true,
+              url: '/login',
+              type: 'post',
+              contentType: 'application/json',
+              dataType: 'json',
+              data: $("#loginForm").serialize(),
+              success: function (data) {
+                  /* if (data.length > 0)
+                      jQuery("#user_info").html(data); */
+                      alert("success!")
+              }
+       };
+	  
+	  jQuery('#loginForm').bind("submit", function(){
+	        /*  var key_word = jQuery("#keyword").val();
+	         if(key_word == ""){ return false; } */
+	         $.ajax(options);
+	         return false;
+  }	
+	  
+	  $("#btn1").click(){
+		  alert("hello");
+		  $.ajax(options);
+		//$("loginForm").ajaxSubmit(options);
+	  }
+}
+ );
+</script>
+</head>
+<body>
+              <div><h1>用户系统</h1>
+              <div>
+              <form id="loginForm" method="post">
+                 userName：<input type="text" name="userName"></input></br>
+                 passWord：<input type="password" name="passWord"></input></br>
+                 <button id="btn1">登陆</button>
+              </form>
+              </div>
+              </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+= Vert.x Spring Boot example
+1.首先从git-hub通过该路径clone项目  url：https://github.com/sciencestar/vertx-pc.git
+2.下载到本地之后通过在eclipse中导入maven项目导入该项目
+3.通过maven工具，update该项目，更新jar包
+4.运行启动类UserRunner.java启动该项目
+5.在浏览器中输入 localhost:8080调试

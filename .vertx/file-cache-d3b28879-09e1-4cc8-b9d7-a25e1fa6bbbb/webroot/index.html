@@ -1,0 +1,92 @@
+<html>
+<head>
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript">
+/*  function login(){
+	 $.ajax(
+	type:"post",
+	url:"/login"
+	data:$('loginForm').serialize(),
+	async:false,
+	error:function(request){
+		alert("connection erro");
+	},
+	success:function(data){
+		alert("success");
+	}
+	 );
+ } */
+ 
+ $(document).ready(
+  function(){
+	 /*  $("#btn1").click(function(){
+		  $.ajax(
+					type:"post",
+					url:"/login"
+					data:$('loginForm').serialize(),
+					async:false,
+					error:function(request){
+						alert("connection erro");
+					},
+					success:function(data){
+						alert("success");
+					}
+					 );
+	  }); */
+	  
+	  $("#btn1").click(
+		function (){
+			//alert($('#loginForm').serializeArray());
+			alert(getFormJson('#loginForm'));
+			//var data = $('#loginForm').serializeArray();
+			  /*  $.ajax(
+						type:"post",
+						url:"/login",
+						data:getFormJson('loginForm'),
+						async:false,
+						cache:false,
+						dataType:"json",
+						error:function(request){
+							alert("connection erro");
+						},
+						success:function(data){
+							alert("success");
+						}
+						 );  */
+		}	  
+	  );
+	  
+	  //获取表单数据
+	  function getFormJson(frm) {  //frm：form表单的id  
+	      var o = {};    
+	      var a = $("#"+frm).serializeArray();    
+	      $.each(a, function() {    
+	          if (o[this.name] !== undefined) {    
+	              if (!o[this.name].push) {    
+	                  o[this.name] = [ o[this.name] ];    
+	              }    
+	              o[this.name].push(this.value || '');    
+	          } else {    
+	              o[this.name] = this.value || '';    
+	          }    
+	      });    
+	      return o;    
+	  } 
+}
+ );
+</script>
+</head>
+<body>
+              <div><h1>用户系统</h1>
+              <div>
+              <form id="loginForm" method="get" action="/login" enctype='application/json'>
+                 userName：<input type="text" name="userName" value="jimTina"/></br>
+                 passWord：<input type="password" name="passWord" value="314159"/></br>
+                 <button id="btn1">登陆系统</button>
+                <!--  <input type="submit" value="登陆系统"/> -->
+              </form>
+              </div>
+              </div>
+</body>
+</html>

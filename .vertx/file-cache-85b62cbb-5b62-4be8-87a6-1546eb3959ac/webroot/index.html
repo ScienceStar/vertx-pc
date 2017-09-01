@@ -1,0 +1,72 @@
+<html>
+<head>
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+
+<script type="text/javascript">
+/*  function login(){
+	 $.ajax(
+	type:"post",
+	url:"/login"
+	data:$('loginForm').serialize(),
+	async:false,
+	error:function(request){
+		alert("connection erro");
+	},
+	success:function(data){
+		alert("success");
+	}
+	 );
+ } */
+ 
+ $(document).ready(
+  function(){
+	 /*  $("#btn1").click(function(){
+		  $.ajax(
+					type:"post",
+					url:"/login"
+					data:$('loginForm').serialize(),
+					async:false,
+					error:function(request){
+						alert("connection erro");
+					},
+					success:function(data){
+						alert("success");
+					}
+					 );
+	  }); */
+	  
+	  $("#a1").click(
+		function (){
+			alert("hello");
+			  $.ajax(
+						type:'post',
+						url:'/login'
+						data:$('#loginForm').serialize(),
+						async:false,
+						cache:false,
+						dataType:'json',
+						error:function(request){
+							alert("connection erro");
+						},
+						success:function(data){
+							alert("success");
+						}
+						 ); 
+		}	  
+	  );
+}
+ );
+</script>
+</head>
+<body>
+              <div><h1>用户系统</h1>
+              <div>
+              <form id="loginForm" method="post" action ="">
+                 userName：<input type="text" name="userName"/></br>
+                 passWord：<input type="password" name="passWord"/></br>
+              </form>
+              <a href="#" style="text-decoration: none;" id="a1">使用ajax提交表单数据</a>
+              </div>
+              </div>
+</body>
+</html>

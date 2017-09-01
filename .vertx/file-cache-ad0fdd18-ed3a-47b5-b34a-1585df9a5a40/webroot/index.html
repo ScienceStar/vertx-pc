@@ -1,0 +1,46 @@
+<html>
+<head>
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/js/jquery-form.js"></script>
+<script type="text/javascript">
+ $(document).ready(
+  function(){
+	  $("#btn1").click(
+				function (){
+					//alert($('#loginForm').serialize());
+					var data = $('#loginForm').serialize();
+					//var data = $('#loginForm').serializeArray();
+					alert(data);
+					     $.ajax(
+								type:'post',
+								url:'/login',
+								data:data,
+								async:false,
+								cache:false,
+								dataType:'json',
+								error:function(request){
+									alert("connection erro");
+								},
+								success:function(data){
+									alert("success");
+								}
+								 ); 
+				}	  
+			  );
+  }
+ );
+</script>
+</head>
+<body>
+              <div><h1>用户系统</h1>
+              <div>
+              <form id="loginForm" method="post" action="/login">
+                 userName：<input type="text" name="userName" value="jimTina"/></br>
+                 passWord：<input type="password" name="passWord" value="314159"/></br>
+                 <button id="btn1">登陆系统</button>
+                <!--  <input type="submit" value="登陆系统"/> -->
+              </form>
+              </div>
+              </div>
+</body>
+</html>
